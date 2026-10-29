@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Environment and Secret Files (NEVER COMMIT)
+.env
+.env.*
+*.env
+*.env.*
+!.env.example
+!*.env.example
+!**/.env.example
+
+# Production & Build Artifacts
+dist/
+*/dist/
+build/
+*/build/
+
+# Testing & Coverage
+coverage/
+*/coverage/
+.nyc_output/
+
+# Logs & Debug
+*.log
+logs/
+*/logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Server Uploads (preserve .gitkeep)
+server/uploads/*
+!server/uploads/.gitkeep
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS & Temp
+.DS_Store
+Thumbs.db
+tmp/
+temp/

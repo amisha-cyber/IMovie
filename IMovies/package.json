@@ -1,0 +1,45 @@
+{
+  "name": "imovies-monorepo",
+  "version": "1.0.0",
+  "description": "IMovies - Full-Stack Cinema Management and Online Ticket Booking System",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "install:all": "npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "build": "npm run build --prefix client",
+    "deploy": "npx wrangler deploy",
+    "start": "npm run start --prefix server",
+    "seed": "npm run seed --prefix server",
+    "seed:admin": "npm run seed:admin --prefix server",
+    "db:check": "npm run db:check --prefix server",
+    "test": "npm run test --prefix server && npm run test --prefix client",
+    "test:server": "npm run test --prefix server",
+    "test:client": "npm run test --prefix client"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "overrides": {
+    "esbuild": "^0.25.0",
+    "tinypool": "^2.2.0",
+    "vite": "^6.4.5"
+  },
+  "keywords": [
+    "mern",
+    "cinema-management",
+    "movie-ticket-booking",
+    "react",
+    "node",
+    "express",
+    "mongodb",
+    "socket.io"
+  ],
+  "author": "Antigravity Engineer",
+  "license": "ISC"
+}

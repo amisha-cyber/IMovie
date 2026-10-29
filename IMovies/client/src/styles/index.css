@@ -1,0 +1,454 @@
+/* ==========================================================================
+   IMovies — Google Stitch "Obsidian Cinema" Design System
+   Source of Truth: Stitch Project 11367477615604972645
+   ========================================================================== */
+
+:root {
+  /* Stitch Obsidian Cinema Core Palette */
+  --imv-canvas: #0B0C10;
+  --imv-bg-main: #0B0C10;
+  --imv-surface-0: #0B0C10;
+  --imv-surface-1: #13151B;
+  --imv-surface-2: #1B1E28;
+  --imv-surface-container-low: #191B22;
+  --imv-surface-container: #1D1F26;
+  --imv-surface-container-high: #282A30;
+  --imv-surface-container-highest: #33353B;
+  --imv-surface-bright: #373940;
+
+  /* Primary Brand Accents */
+  --imv-primary: #E50914;               /* Cinematic Crimson */
+  --imv-primary-hover: #b80710;
+  --imv-primary-glow: rgba(229, 9, 20, 0.45);
+  --imv-primary-subtle: rgba(229, 9, 20, 0.15);
+  --imv-primary-fixed-dim: #FFB4AA;
+
+  /* Secondary Accents */
+  --imv-secondary: #D4AF37;             /* Champagne Gold */
+  --imv-gold: #D4AF37;
+  --imv-secondary-container: #af8d11;
+  --imv-gold-glow: rgba(212, 175, 55, 0.35);
+
+  /* Tertiary / Rose Glow */
+  --imv-tertiary: #FFB2B7;
+  --imv-tertiary-container: #D9294C;
+  --imv-rose: #F43F5E;
+
+  /* Neutral Typography & Borders */
+  --imv-text-high: #FFFFFF;
+  --imv-text-main: #FFFFFF;
+  --imv-text-med: #E2E2EA;
+  --imv-text-muted: #A1A7B8;
+  --imv-text-disabled: #545B6E;
+  --imv-border: #2A2E3D;
+  --imv-border-subtle: rgba(42, 46, 61, 0.6);
+  --imv-border-active: #E50914;
+
+  /* Typography Families */
+  --imv-font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --imv-font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Base resets & typography */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--imv-canvas);
+  color: var(--imv-text-med);
+  font-family: var(--imv-font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, .brand-font, .font-display {
+  font-family: var(--imv-font-display);
+  letter-spacing: -0.02em;
+  color: var(--imv-text-high);
+}
+
+.font-body {
+  font-family: var(--imv-font-body);
+}
+
+/* Stitch Label-Caps Spec (Space Grotesk, 11px, 700, 0.08em tracking) */
+.label-caps {
+  font-family: var(--imv-font-display);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Material Symbols alignment helper */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  vertical-align: middle;
+}
+
+/* ==========================================================================
+   Stitch Glassmorphism & Surface Utilities
+   ========================================================================== */
+
+.stitch-navbar {
+  background: rgba(11, 12, 16, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--imv-border);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+  z-index: 1030;
+}
+
+.stitch-card {
+  background: var(--imv-surface-1);
+  border: 1px solid var(--imv-border);
+  border-radius: 16px;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.stitch-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(229, 9, 20, 0.25);
+  border-color: rgba(244, 63, 94, 0.5);
+}
+
+.card-elevated {
+  background: var(--imv-surface-2);
+  border: 1px solid var(--imv-border);
+  border-radius: 16px;
+}
+
+/* Ambient Optical Blooms from Stitch */
+.ambient-glow-crimson {
+  position: absolute;
+  width: 500px;
+  height: 350px;
+  background: rgba(229, 9, 20, 0.12);
+  filter: blur(140px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambient-glow-gold {
+  position: absolute;
+  width: 450px;
+  height: 350px;
+  background: rgba(212, 175, 55, 0.08);
+  filter: blur(140px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ==========================================================================
+   Stitch Button & Action Affordances
+   ========================================================================== */
+
+/* Primary Crimson High-Sheen CTA */
+.btn-cinema, .stitch-btn-primary {
+  background: linear-gradient(135deg, #E50914 0%, #B80710 100%);
+  color: #FFFFFF !important;
+  border: none;
+  font-family: var(--imv-font-body);
+  font-weight: 700;
+  border-radius: 8px;
+  box-shadow: 0 0 24px rgba(229, 9, 20, 0.45);
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-cinema:hover, .stitch-btn-primary:hover {
+  box-shadow: 0 0 32px rgba(229, 9, 20, 0.7);
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+  color: #FFFFFF !important;
+}
+
+/* Secondary Frosted CTA */
+.btn-cinema-outline, .stitch-btn-secondary {
+  background: rgba(27, 30, 40, 0.85);
+  color: var(--imv-text-high) !important;
+  border: 1px solid var(--imv-border);
+  border-radius: 8px;
+  font-family: var(--imv-font-body);
+  font-weight: 600;
+  backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-cinema-outline:hover, .stitch-btn-secondary:hover {
+  background: var(--imv-surface-container-high);
+  border-color: #FFFFFF;
+  color: #FFFFFF !important;
+}
+
+/* VIP Champagne Gold Button */
+.stitch-btn-gold {
+  background: linear-gradient(135deg, #D4AF37 0%, #AA8A2A 100%);
+  color: #0B0C10 !important;
+  border: none;
+  font-family: var(--imv-font-body);
+  font-weight: 700;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.35);
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.stitch-btn-gold:hover {
+  box-shadow: 0 0 28px rgba(212, 175, 55, 0.55);
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+/* Radiance utilities */
+.glow-primary {
+  box-shadow: 0 0 24px rgba(229, 9, 20, 0.45);
+}
+
+.glow-gold {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.35);
+}
+
+/* ==========================================================================
+   Stitch Movie Cards (2:3 Aspect Ratio)
+   ========================================================================== */
+
+.movie-card {
+  background: var(--imv-surface-1);
+  border: 1px solid var(--imv-border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(229, 9, 20, 0.25);
+  border-color: rgba(244, 63, 94, 0.5);
+}
+
+.movie-poster-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 2 / 3;
+  background-color: var(--imv-surface-0);
+}
+
+.movie-poster-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.movie-card:hover .movie-poster-wrap img {
+  transform: scale(1.04);
+}
+
+.movie-poster-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(19, 21, 27, 0.95) 0%, rgba(19, 21, 27, 0.2) 40%, rgba(0, 0, 0, 0.4) 100%);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Stitch Filter Chips & Pills
+   ========================================================================== */
+
+.filter-chip {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-family: var(--imv-font-body);
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--imv-surface-container);
+  color: var(--imv-text-muted);
+  border: 1px solid var(--imv-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.filter-chip:hover {
+  background: var(--imv-surface-container-high);
+  color: var(--imv-text-high);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.filter-chip.active {
+  background: var(--imv-primary) !important;
+  color: #FFFFFF !important;
+  border-color: var(--imv-rose) !important;
+  box-shadow: 0 0 16px rgba(229, 9, 20, 0.45);
+}
+
+.filter-chip-gold.active {
+  background: var(--imv-gold) !important;
+  color: #0B0C10 !important;
+  border-color: var(--imv-gold) !important;
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.4);
+}
+
+/* ==========================================================================
+   Cinema Seating Matrix
+   ========================================================================== */
+
+.cinema-screen-container {
+  perspective: 600px;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.cinema-screen {
+  height: 14px;
+  width: 75%;
+  margin: 0 auto;
+  background: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0.15));
+  border-radius: 50% 50% 0 0;
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.35);
+  transform: rotateX(-15deg);
+}
+
+.cinema-screen-text {
+  font-family: var(--imv-font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  color: var(--imv-text-muted);
+  margin-top: 12px;
+  text-transform: uppercase;
+}
+
+.seat-button {
+  width: 36px;
+  height: 34px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s ease;
+  margin: 3px;
+}
+
+.seat-available {
+  background: transparent;
+  color: var(--imv-text-med);
+  border: 1.5px solid var(--imv-border);
+}
+
+.seat-available:hover {
+  background: var(--imv-surface-container-high);
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.08);
+}
+
+.seat-selected {
+  background: var(--imv-primary) !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid var(--imv-rose) !important;
+  box-shadow: 0 0 16px rgba(229, 9, 20, 0.75);
+  transform: scale(1.08);
+}
+
+.seat-held {
+  background: #78350F !important;
+  color: #FDE68A !important;
+  border: 1.5px solid #B45309 !important;
+  cursor: not-allowed;
+  animation: pulse-held 1.6s infinite ease-in-out;
+}
+
+@keyframes pulse-held {
+  0%, 100% { opacity: 0.65; }
+  50% { opacity: 1; }
+}
+
+.seat-booked {
+  background: var(--imv-surface-2) !important;
+  color: var(--imv-text-disabled) !important;
+  border: 1px solid transparent !important;
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+/* ==========================================================================
+   Admin Navigation
+   ========================================================================== */
+
+.admin-sidebar {
+  width: 260px;
+  background: var(--imv-surface-1);
+  border-right: 1px solid var(--imv-border);
+  min-height: calc(100vh - 64px);
+}
+
+.admin-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: var(--imv-text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.admin-nav-item:hover, .admin-nav-item.active {
+  background: rgba(229, 9, 20, 0.12);
+  color: var(--imv-primary);
+  border-left: 3px solid var(--imv-primary);
+}
+
+/* Print Styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .printable-ticket, .printable-ticket * {
+    visibility: visible;
+  }
+  .printable-ticket {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    color: #000 !important;
+    background: #fff !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
